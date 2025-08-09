@@ -71,6 +71,10 @@ button:active {
    background-color: hsl(214, 100%, 63%);
 }
 
+.zero-btn {
+    grid-column: span 2;
+}
+
 @media only screen and (max-width: 600px) {
     body {
         padding-left: 15px;
@@ -103,3 +107,6 @@ button:active {
         padding: 40px;
     }
 }
+
+
+
