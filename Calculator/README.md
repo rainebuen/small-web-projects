@@ -10,6 +10,8 @@ Responsive layout for desktop and mobile
 Styled buttons for better user experience
 
 📸 Preview
+<img width="654" height="841" alt="image" src="https://github.com/user-attachments/assets/2818db28-4304-4689-8033-02b03fdee92e" />
+
 
 🛠 Technologies Used
 HTML – structure
