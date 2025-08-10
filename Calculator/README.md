@@ -1,4 +1,4 @@
-Calculator
+
 A simple, modern calculator web app built with HTML, CSS, and JavaScript.
 It performs basic arithmetic operations with a clean and responsive UI.
 
