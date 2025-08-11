@@ -41,10 +41,18 @@ const toggleTaskComplete = (index) => {
 };
 
 const deleteTask = (index) => {
-    tasks.splice(index, 1);
-    updateTaskList();
-    updateStats();
-    saveTasks();
+  let result = confirm("Are you sure you want to delete this task?");
+    if (result) {
+        console.log("Item deleted");
+         tasks.splice(index, 1);
+         updateTaskList();
+         updateStats();
+         saveTasks();
+    }
+   else {
+    console.log("Action canceled");
+    }
+ 
 };
 
 const editTask = (index) => {
@@ -151,4 +159,5 @@ fire(0.1, {
   spread: 120,
   startVelocity: 45,
 });
+
 }
