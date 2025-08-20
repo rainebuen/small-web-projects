@@ -1,26 +1,48 @@
-// Calculator
+const display = document.getElementById('display');
+let currentNum = '';
+let lastInputWasOperator = false;
 
-const display = document.getElementById("display");
 
-function appendToDisplay(input) {
-    display.value += input;
+function appendToDisplay(value) {
+    const isOperator = ['+', '-', '*', '/'].includes(value);
+    const lastNumber = currentNum.split(/[\+\-\*\/]/).pop();
+
+    if (currentNum === '' && (value === '+' || value === '*' || value === '/')) {
+        return;
+    }
+
+    if (lastInputWasOperator && isOperator) {
+        currentNum = currentNum.slice(0, -1) + value;
+    } 
+    else if (value === '.' && lastNumber.includes('.')) {
+        return;
+    }
+    else {
+        currentNum += value;
+    }
+
+    lastInputWasOperator = isOperator;
+    display.value = currentNum;
 }
+
 
 function clearDisplay() {
- display.value = "";
+    currentNum = '';
+    display.value = '';
+    lastInputWasOperator = false;;
 }
-
-function calculate() {
-    try {
-        display.value = eval(display.value);
-    }
-
-    catch(error) {
-        display.value = "Error";
-    }
-    
-}
-
 function deleteKey() {
-     display.value = display.value.slice(0, -1);
+    currentNum = currentNum.slice(0, -1);
+    display.value = currentNum;
+    lastInputWasOperator = false;
+}
+
+function calculateResult() {
+    try {
+       const result = new Function('return ' + currentNum)();
+        display.value = result;
+        currentNum = String(result);
+    } catch (error) {
+        display.value = 'Error';
+    }
 }
